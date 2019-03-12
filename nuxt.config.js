@@ -48,7 +48,12 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/vuetify'],
+  plugins: ['@/plugins/vuetify', { src: '@/plugins/fireauth.js', ssr: false }],
+
+  /*
+  ** Router middleware to run before rendering either a page or a group of pages
+  */
+  router: { middleware: ['router-auth'] },
 
   /*
   ** Nuxt.js modules
