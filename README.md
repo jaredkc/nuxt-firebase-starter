@@ -9,7 +9,7 @@
 - Firebase integrations using: Hosting, Firestore DB, Cloud Functions and Storage.
   - Learn more about [getting started with Firebase](https://firebase.google.com/docs/cli/).
 - [Vuetify](https://vuetifyjs.com/en/) integration for quick application development with Material Design.
-
+- See the [demo application](https://nuxtfirebasestarter.firebaseapp.com)
 
 ## Firebase Setup
 
@@ -42,7 +42,7 @@ MESSAGING_SENDER_ID=
 
 ## Build Setup
 
-## Nuxt
+### Nuxt
 
 ``` bash
 # install dependencies
