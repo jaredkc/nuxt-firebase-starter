@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -42,48 +42,45 @@
       >
         <v-icon>web</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn>
+
       <v-toolbar-title v-text="title" />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>menu</v-icon>
-      </v-btn>
+
+      <v-spacer />
+
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn
+            icon
+            v-on="on"
+          >
+            <v-icon>account_circle</v-icon>
+          </v-btn>
+        </template>
+        <v-list dense>
+          <v-list-tile
+            to="/account"
+            router
+            exact
+          >
+            <v-list-tile-title>My Account</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile
+            @click="signOut"
+          >
+            <v-list-tile-title>Sign out</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
     </v-toolbar>
+
     <v-content>
-      <v-container>
+      <v-container
+        :fluid="fillHeight"
+        :fill-height="fillHeight"
+      >
         <nuxt />
       </v-container>
     </v-content>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon light>
-              compare_arrows
-            </v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
-      <span>&copy; 2019</span>
-    </v-footer>
   </v-app>
 </template>
 
@@ -91,9 +88,9 @@
 export default {
   data() {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
+      title: 'NuxtFire App',
+      clipped: true,
+      drawer: true,
       items: [
         {
           icon: 'apps',
@@ -101,15 +98,23 @@ export default {
           to: '/'
         },
         {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
+          icon: 'settings',
+          title: 'Admin',
+          to: '/admin'
         }
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      miniVariant: false
+    }
+  },
+  computed: {
+    fillHeight() {
+      const routeName = this.$route.name
+      return routeName === 'signup' || routeName === 'signin'
+    }
+  },
+  methods: {
+    signOut() {
+      alert('Sign out')
     }
   }
 }
