@@ -1,7 +1,7 @@
 {
   "name": "nuxt-firebase-starter",
   "version": "1.0.0",
-  "description": "Nuxt start project with Vuetify and Firebase (Auth, Functions, Firestore, Hosting)",
+  "description": "Nuxt starter project with Vuetify and Firebase (Auth, Functions, Firestore, Hosting)",
   "author": "Jared Cornwall",
   "private": true,
   "scripts": {
