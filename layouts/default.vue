@@ -85,6 +85,8 @@
 </template>
 
 <script>
+import { auth } from '@/fireinit.js'
+
 export default {
   data() {
     return {
@@ -114,7 +116,10 @@ export default {
   },
   methods: {
     signOut() {
-      alert('Sign out')
+      auth.signOut().then(() => {
+        this.$store.commit('user/unsetUser')
+        this.$router.push({ name: 'signin' })
+      })
     }
   }
 }
