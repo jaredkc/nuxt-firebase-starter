@@ -7,6 +7,9 @@
 - Initial Nuxt applications using: SPA mode, PWA module, Axios module.
   - Learn more about [getting started with Nuxt](https://nuxtjs.org/guide/installation).
 - Firebase integrations using: Hosting, Firestore DB, Cloud Functions and Storage.
+  - Router middleware to redirect based on signed in/out status (`middleware/router-auth.js`).
+  - Plugin for Firebase onAuthStateChanged to set user in state (`plugins/fireauth.js`).
+  - Create Firestore DB record for user on sign up (`store/users.js`).
   - Learn more about [getting started with Firebase](https://firebase.google.com/docs/cli/).
 - [Vuetify](https://vuetifyjs.com/en/) integration for quick application development with Material Design.
 - See the [demo application](https://nuxtfirebasestarter.firebaseapp.com)
