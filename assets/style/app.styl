@@ -1,2 +1,25 @@
 // Import Vuetify styling
 @require '~vuetify/src/stylus/app.styl'
+
+.typ-center-line
+  overflow hidden
+  text-align center
+  &:after,
+  &:before {
+    background-color $border-color
+    content ""
+    display inline-block
+    height 1px
+    position relative
+    top -1px
+    vertical-align middle
+    width 50%
+  }
+  &:after {
+    left 0.5rem
+    margin-right -50%
+  }
+  &:before {
+    margin-left -50%
+    right 0.5rem
+  }

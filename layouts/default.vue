@@ -53,21 +53,40 @@
             icon
             v-on="on"
           >
-            <v-icon>account_circle</v-icon>
+            <v-avatar
+              v-if="$store.state.user.photoURL"
+              :size="24"
+              color="grey lighten-4"
+            >
+              <img :src="$store.state.user.photoURL" alt="avatar">
+            </v-avatar>
+            <v-icon v-else>
+              account_circle
+            </v-icon>
           </v-btn>
         </template>
         <v-list dense>
+          <template v-if="$store.state.user.signedIn">
+            <v-list-tile
+              to="/account"
+              router
+              exact
+            >
+              <v-list-tile-title>My Account</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile
+              @click="signOut"
+            >
+              <v-list-tile-title>Sign out</v-list-tile-title>
+            </v-list-tile>
+          </template>
           <v-list-tile
-            to="/account"
+            v-else
+            to="/signin"
             router
             exact
           >
-            <v-list-tile-title>My Account</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile
-            @click="signOut"
-          >
-            <v-list-tile-title>Sign out</v-list-tile-title>
+            <v-list-tile-title>Sign in</v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
