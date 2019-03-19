@@ -30,18 +30,6 @@
       app
     >
       <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>web</v-icon>
-      </v-btn>
 
       <v-toolbar-title v-text="title" />
 
@@ -112,6 +100,7 @@ export default {
       title: 'NuxtFire App',
       clipped: true,
       drawer: true,
+      miniVariant: false,
       items: [
         {
           icon: 'apps',
@@ -123,8 +112,7 @@ export default {
           title: 'Admin',
           to: '/admin'
         }
-      ],
-      miniVariant: false
+      ]
     }
   },
   computed: {
