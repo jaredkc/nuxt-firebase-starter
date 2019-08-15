@@ -1,7 +1,6 @@
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
-const pkg = require('./package')
+const pkg = require('./package');
 
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = {
   mode: 'spa',
@@ -38,17 +37,17 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#ff0000' },
 
   /*
   ** Global CSS
   */
-  css: ['~/assets/style/app.styl'],
+  css: ['@/assets/scss/app.scss'],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/vuetify', { src: '@/plugins/fireauth.js', ssr: false }],
+  plugins: [{ src: '@/plugins/fireauth.js', ssr: false }],
 
   /*
   ** Router middleware to run before rendering either a page or a group of pages
@@ -61,8 +60,14 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources'
   ],
+
+  styleResources: {
+    scss: ['assets/scss/_variables.scss']
+  },
+
   /*
   ** Axios module configuration
   */
@@ -74,14 +79,6 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    transpile: ['vuetify/lib'],
-    plugins: [new VuetifyLoaderPlugin()],
-    loaders: {
-      stylus: {
-        import: ['~assets/style/variables.styl']
-      }
-    },
-
     /*
     ** You can extend webpack config here
     */
@@ -93,8 +90,8 @@ module.exports = {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
-        })
+        });
       }
     }
   }
-}
+};

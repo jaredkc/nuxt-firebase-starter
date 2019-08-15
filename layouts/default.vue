@@ -1,133 +1,81 @@
 <template>
-  <v-app>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title" />
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-toolbar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-toolbar-side-icon @click="drawer = !drawer" />
+  <div>
+    <nav class="app-nav">
+      <div>
+        {{ title }}
+      </div>
+      <div>
+        <nuxt-link :to="{name: 'index'}">
+          Home
+        </nuxt-link>
+        &middot;
+        <nuxt-link :to="{name: 'admin'}">
+          Admin
+        </nuxt-link>
+      </div>
+      <div v-if="$store.state.user.signedIn">
+        <img :src="$store.state.user.photoURL" alt="avatar" class="avatar">
+        <nuxt-link :to="{name: 'account'}">
+          My Account
+        </nuxt-link>
+        <button @click="signOut">
+          Sign out
+        </button>
+      </div>
+      <div v-else>
+        <nuxt-link :to="{name: 'signin'}">
+          Sign in
+        </nuxt-link>
+      </div>
+    </nav>
 
-      <v-toolbar-title v-text="title" />
-
-      <v-spacer />
-
-      <v-menu offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn
-            icon
-            v-on="on"
-          >
-            <v-avatar
-              v-if="$store.state.user.photoURL"
-              :size="24"
-              color="grey lighten-4"
-            >
-              <img :src="$store.state.user.photoURL" alt="avatar">
-            </v-avatar>
-            <v-icon v-else>
-              account_circle
-            </v-icon>
-          </v-btn>
-        </template>
-        <v-list dense>
-          <template v-if="$store.state.user.signedIn">
-            <v-list-tile
-              to="/account"
-              router
-              exact
-            >
-              <v-list-tile-title>My Account</v-list-tile-title>
-            </v-list-tile>
-            <v-list-tile
-              @click="signOut"
-            >
-              <v-list-tile-title>Sign out</v-list-tile-title>
-            </v-list-tile>
-          </template>
-          <v-list-tile
-            v-else
-            to="/signin"
-            router
-            exact
-          >
-            <v-list-tile-title>Sign in</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
-    </v-toolbar>
-
-    <v-content>
-      <v-container
-        :fluid="fillHeight"
-        :fill-height="fillHeight"
-      >
-        <nuxt />
-      </v-container>
-    </v-content>
-  </v-app>
+    <main class="app-main">
+      <nuxt />
+    </main>
+  </div>
 </template>
 
 <script>
-import { auth } from '@/fireinit.js'
+import { auth } from '@/fireinit.js';
 
 export default {
   data() {
     return {
-      title: 'NuxtFire App',
-      clipped: true,
-      drawer: true,
-      miniVariant: false,
-      items: [
-        {
-          icon: 'apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'settings',
-          title: 'Admin',
-          to: '/admin'
-        }
-      ]
-    }
-  },
-  computed: {
-    fillHeight() {
-      const routeName = this.$route.name
-      return routeName === 'signup' || routeName === 'signin'
-    }
+      title: 'NuxtFire App'
+    };
   },
   methods: {
     signOut() {
       auth.signOut().then(() => {
-        this.$store.commit('user/unsetUser')
-        this.$router.push({ name: 'signin' })
-      })
+        this.$store.commit('user/unsetUser');
+        this.$router.push({ name: 'signin' });
+      });
     }
   }
-}
+};
 </script>
+
+<style lang="scss">
+.app-nav {
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  min-height: 3rem;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.avatar {
+  border-radius: 15px;
+  width: 30px;
+}
+.app-main {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  padding: 1rem;
+}
+</style>

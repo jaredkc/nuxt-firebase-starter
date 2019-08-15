@@ -1,6 +1,6 @@
 # nuxt-firebase-starter
 
-> Nuxt/Firebase starter project with Vuetify
+> Nuxt/Firebase starter project
 
 ## Overview
 
@@ -11,7 +11,6 @@
   - Plugin for Firebase onAuthStateChanged to set user in state (`plugins/fireauth.js`).
   - Create Firestore DB record for user on sign up (`store/users.js`).
   - Learn more about [getting started with Firebase](https://firebase.google.com/docs/cli/).
-- [Vuetify](https://vuetifyjs.com/en/) integration for quick application development with Material Design.
 - See the [demo application](https://nuxtfirebasestarter.firebaseapp.com)
 
 ## Firebase Setup

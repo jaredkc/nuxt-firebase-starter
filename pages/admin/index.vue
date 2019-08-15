@@ -1,24 +1,8 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Admin
-        </v-card-title>
-        <v-card-text>
-          <p>You can only access this page if you're signed in.</p>
-        </v-card-text>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <div>
+    <h1>Welcome to the Admin</h1>
+    <p>You can only access this page if you're signed in.</p>
+  </div>
 </template>
 
 <script>
@@ -27,7 +11,7 @@ export default {
   head() {
     return {
       title: 'Admin'
-    }
+    };
   }
-}
+};
 </script>

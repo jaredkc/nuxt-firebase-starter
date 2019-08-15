@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+input,
+textarea,
+button,
+select {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+svg {
+  vertical-align: middle;
+}
+
+hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid #999;
+  margin: 1rem 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+code {
+  font-size: 87.5%;
+  color: #e83e8c;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #fff;
+  border-radius: $border-radius;
+  color: #212529;
+  display: block;
+  font-size: 87.5%;
+  margin: 1rem 0;
+  padding: 1rem;
+  overflow: auto;
+  code {
+    color: inherit;
+    font-size: inherit;
+  }
+}

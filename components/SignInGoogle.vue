@@ -1,9 +1,5 @@
 <template>
-  <v-btn
-    large
-    block
-    @click="signInGoogle"
-  >
+  <button @click="signInGoogle">
     <span class="google-btn__icon mr-3">
       <svg
         focusable="false"
@@ -17,28 +13,28 @@
       </svg>
     </span>
     Sign in with Google
-  </v-btn>
+  </button>
 </template>
 
 <script>
-import firebase, { auth } from '@/fireinit.js'
+import firebase, { auth } from '@/fireinit.js';
 
 export default {
   name: 'SignInGoogle',
   methods: {
     signInGoogle() {
-      const provider = new firebase.auth.GoogleAuthProvider()
+      const provider = new firebase.auth.GoogleAuthProvider();
       auth
         .signInWithPopup(provider)
         .then(res => {
-          this.$store.dispatch('user/authorize', res)
+          this.$store.dispatch('user/authorize', res);
         })
         .then(() => {
-          this.$router.push({ name: 'index' })
-        })
+          this.$router.push({ name: 'index' });
+        });
     }
   }
-}
+};
 </script>
 
 <style>
