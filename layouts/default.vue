@@ -2,80 +2,76 @@
   <div>
     <nav class="app-nav">
       <div>
-        {{ title }}
-      </div>
-      <div>
         <nuxt-link :to="{name: 'index'}">
-          Home
-        </nuxt-link>
-        &middot;
-        <nuxt-link :to="{name: 'admin'}">
-          Admin
+          <b>{{ title }}</b>
         </nuxt-link>
       </div>
-      <div v-if="$store.state.user.signedIn">
-        <img :src="$store.state.user.photoURL" alt="avatar" class="avatar">
-        <nuxt-link :to="{name: 'account'}">
-          My Account
-        </nuxt-link>
-        <button @click="signOut">
-          Sign out
-        </button>
+      <div v-if="isSignedIn">
+        <ul>
+          <li>
+            <nuxt-link :to="{name: 'admin'}">
+              Admin
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link :to="{name: 'account'}">
+              My Account
+            </nuxt-link>
+          </li>
+        </ul>
       </div>
       <div v-else>
-        <nuxt-link :to="{name: 'signin'}">
-          Sign in
-        </nuxt-link>
+        <ul>
+          <li>
+            <nuxt-link :to="{name: 'signin'}">
+              Sign in
+            </nuxt-link>
+          </li>
+        </ul>
       </div>
     </nav>
 
-    <main class="app-main">
+    <main>
       <nuxt />
     </main>
   </div>
 </template>
 
 <script>
-import { auth } from '@/fireinit.js';
-
 export default {
   data() {
     return {
       title: 'NuxtFire App'
     };
   },
-  methods: {
-    signOut() {
-      auth.signOut().then(() => {
-        this.$store.commit('user/unsetUser');
-        this.$router.push({ name: 'signin' });
-      });
+  computed: {
+    isSignedIn() {
+      return this.$store.state.user.signedIn;
     }
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .app-nav {
   align-items: center;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
   display: flex;
   justify-content: space-between;
-  min-height: 3rem;
   padding: 1rem;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
 }
-.avatar {
-  border-radius: 15px;
-  width: 30px;
-}
-.app-main {
-  align-items: center;
-  display: flex;
-  height: 100vh;
-  padding: 1rem;
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    margin-left: 1rem;
+  }
 }
 </style>

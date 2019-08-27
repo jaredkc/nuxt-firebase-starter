@@ -1,0 +1,90 @@
+html,
+button,
+input,
+select,
+textarea {
+  color: $typ-color;
+  font-family: -apple-system, BlinkMacSystemFont, San Francisco, Roboto,
+    Segoe UI, Helvetica Neue, sans-serif;
+}
+
+body {
+  line-height: 1.4;
+}
+
+h1, h2, h3, h4 h5, h6 {
+  line-height: initial;
+}
+
+a {
+  color: $link-color;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+a:hover {
+  color: $link-color-hover;
+}
+a:focus {
+  color: inherit;
+}
+
+.typ-xs {
+  font-size: 10px;
+}
+.typ-sm {
+  font-size: 14px;
+}
+.typ-md {
+  font-size: 1.1em;
+}
+.typ-lg {
+  font-size: 1.2em;
+}
+.typ-xl {
+  font-size: 1.5em;
+}
+.typ-2xl {
+  font-size: 2em;
+}
+
+.typ-center {
+  text-align: center;
+}
+.typ-right {
+  text-align: right;
+}
+.typ-left {
+  text-align: left;
+}
+
+.typ-caps {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.typ-center-line {
+  overflow: hidden;
+  text-align: center;
+  &:after,
+  &:before {
+    background-color: $border-color;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+    width: 50%;
+  }
+  &:after {
+    left: 0.5rem;
+    margin-right: -50%;
+  }
+  &:before {
+    margin-left: -50%;
+    right: 0.5rem;
+  }
+}

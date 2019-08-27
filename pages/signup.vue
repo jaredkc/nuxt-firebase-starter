@@ -1,7 +1,10 @@
 <template>
-  <div class="ma-auto" style="max-width:340px;">
-    <sign-in-google class="mt-3" />
-    <p>or</p>
+  <page-card>
+    <p><sign-in-google /></p>
+
+    <p class="typ-center-line">
+      or
+    </p>
 
     <form class="content-narrow" @submit.prevent="signUp">
       <p>
@@ -21,23 +24,27 @@
         Sign up
       </button>
     </form>
+
+    <hr>
+
     <p>
       Already have an account?
       <nuxt-link :to="{name: 'signin'}">
         Sign in
       </nuxt-link>
     </p>
-  </div>
+  </page-card>
 </template>
 
 <script>
 import { auth } from '@/fireinit.js';
 
+import PageCard from '@/components/PageCard.vue';
 import SignInGoogle from '~/components/SignInGoogle.vue';
 
 export default {
   name: 'SignUp',
-  components: { SignInGoogle },
+  components: { PageCard, SignInGoogle },
   head() {
     return {
       title: 'Sign up'

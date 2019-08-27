@@ -1,6 +1,6 @@
 <template>
-  <button @click="signInGoogle">
-    <span class="google-btn__icon mr-3">
+  <button class="google-btn" @click="signInGoogle">
+    <span class="google-btn__icon">
       <svg
         focusable="false"
         aria-hidden="true"
@@ -37,12 +37,30 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.google-btn {
+  display: inline-block;
+  background-color: white;
+  color: #444;
+  border-radius: $border-radius;
+  border: 1px solid #dfe3e8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 14px 24px 14px 20px;
+  font-family: sans-serif;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 16px;
+  white-space: nowrap;
+  &:hover {
+    cursor: pointer;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
 .google-btn__icon {
   display: inline-block;
-  margin-top: -1px;
   width: 18px;
-  height: 18px;
-  vertical-align: middle;
+  height: 19px;
+  margin-right: 10px;
+  vertical-align: top;
 }
 </style>

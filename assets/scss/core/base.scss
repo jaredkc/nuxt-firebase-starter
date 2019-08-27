@@ -25,8 +25,8 @@ svg {
 hr {
   height: 0;
   border: 0;
-  border-top: 1px solid #999;
-  margin: 1rem 0;
+  border-top: 1px solid $border-color;
+  margin: 2rem 0;
 }
 
 table {
@@ -43,7 +43,6 @@ code {
 
 pre {
   background-color: #fff;
-  border-radius: $border-radius;
   color: #212529;
   display: block;
   font-size: 87.5%;

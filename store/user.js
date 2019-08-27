@@ -1,34 +1,34 @@
 import { db, functions } from '@/fireinit.js';
 
 export const state = () => ({
-  loading: true,
-  signedIn: false,
-  id: null,
   displayName: null,
   email: null,
+  id: null,
+  loading: true,
   photoURL: null,
-  role: null
+  role: null,
+  signedIn: false
 });
 
 export const mutations = {
   setUser(state, user) {
-    state.loading = false;
-    state.signedIn = true;
-    state.id = user.uid;
     state.displayName = user.displayName || user.email.split('@')[0];
     state.email = user.email;
+    state.id = user.uid;
+    state.loading = false;
     state.photoURL = user.photoURL || null;
+    state.signedIn = true;
   },
   setNoUser(state) {
     state.loading = false;
   },
   unsetUser(state) {
-    state.signedIn = false;
-    state.id = null;
     state.displayName = null;
     state.email = null;
+    state.id = null;
     state.photoURL = null;
     state.role = null;
+    state.signedIn = false;
   }
 };
 
