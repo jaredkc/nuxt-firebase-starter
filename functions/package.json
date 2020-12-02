@@ -11,15 +11,15 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "firebase-admin": "~7.0.0",
+    "firebase-admin": "^9.4.1",
     "firebase-functions": "^2.3.1"
   },
   "devDependencies": {
     "tslint": "^5.20.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.7"
   },
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "private": true
 }
