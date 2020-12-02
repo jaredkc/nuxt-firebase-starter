@@ -4,7 +4,7 @@
 
 ## Overview
 
-- Initial Nuxt applications using: SPA mode, PWA module, Axios module.
+- Initial Nuxt applications using: SPA mode, Axios module.
   - Learn more about [getting started with Nuxt](https://nuxtjs.org/guide/installation).
 - Firebase integrations using: Hosting, Firestore DB, Cloud Functions and Storage.
   - Router middleware to redirect based on signed in/out status (`middleware/router-auth.js`).
